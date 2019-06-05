@@ -1,0 +1,141 @@
+<!doctype html>
+
+<html>
+  <!-- Any copyright is dedicated to the Public Domain.
+			  http://creativecommons.org/publicdomain/zero/1.0/
+	-->
+    <head>
+
+        <title>Geospatial anchors with WebXR</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        /*
+        colors
+         */
+
+        /*https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Regular.woff2*/
+
+
+        @font-face { font-family: 'Zilla Slab'; font-weight: normal; font-style: normal; src: url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Regular.woff2") format("woff2"), url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Regular.woff") format("woff"); }
+        @font-face { font-family: 'Zilla Slab'; font-weight: bold; font-style: normal; src: url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Bold.woff2") format("woff2"), url("https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/wp-content/themes/frontierline/fonts/ZillaSlab-Bold.woff") format("woff"); }
+        /*@font-face { font-family: 'Zilla Slab'; font-weight: normal; font-style: italic; src: url("fonts/ZillaSlab-RegularItalic.woff2") format("woff2"), url("fonts/ZillaSlab-RegularItalic.woff") format("woff"); }*/
+        /*@font-face { font-family: 'Zilla Slab'; font-weight: bold; font-style: italic; src: url("fonts/ZillaSlab-BoldItalic.woff2") format("woff2"), url("fonts/ZillaSlab-BoldItalic.woff") format("woff"); }*/
+        /*@font-face { font-family: 'Open Sans'; font-weight: normal; font-style: normal; src: url("fonts/opensans-regular.woff2") format("woff2"), url("fonts/opensans-regular.woff") format("woff"); }*/
+        /*@font-face { font-family: 'Open Sans'; font-weight: bold; font-style: normal; src: url("fonts/opensans-bold.woff2") format("woff2"), url("fonts/opensans-bold.woff") format("woff"); }*/
+
+
+        body, html {
+            background-color: #ffffff;
+            color: #221E1D;
+            font-family: "Zilla Slab", "Open Sans", X-LocaleSpecific, sans-serif;
+            /*font-size: 12px;*/
+            line-height: 1.3em;
+        }
+
+        h1, h2, h3 {
+            background-color: #221E1D;
+            color: white;
+            padding: 0.25rem 0.25rem 0.5rem 0.4rem;
+            font-weight: normal;
+            margin: 2rem 0 0 0;
+        }
+
+        a {
+            color: #00a7e0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            background-color: #eee;
+        }
+
+        /* layout */
+
+        body, html {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 200px;
+        }
+
+        section {
+            margin: 0.5rem;
+        }
+        section > * {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        ul li img {
+            width: 100%;
+            height: auto;
+            margin:0;
+            padding:0;
+        }
+
+        .intro {
+            max-width: 40em;
+            padding: 0.5rem 0;
+        }
+
+        .source {
+            font-size: 0.8rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li a {
+            font-size: 1.3rem;
+        }
+
+        li p {
+            margin-top: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            margin:0;
+            padding:0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+        }
+        li {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em;
+            margin: 0.5rem;
+            justify-content: flex-start;
+        }
+        li a.img {
+            flex: 1;
+            justify-self: flex-end;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>Geospatial Anchors with WebXR</h1>
+
+    <h2>GeoAlignment Examples</h2>
+    <ul>
+        <li>
+            <a href="examples/geospatial/">Geospatial Anchors</a>
+            <a class="source" href="https://github.com/mozillaReality/webxr-geospatial/blob/master/examples/geospatial/index.html">source</a>
+            <p>Place a cube north of the user</p>
+            <a  class="img" href="examples/geospatial/">
+                <img src="examples/geospatial/screenshot.jpeg" width="300" height="200"/>
+            </a>
+        </li>
+    </ul>
+</section>
+</body>
+</html>
