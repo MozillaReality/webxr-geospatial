@@ -22,12 +22,11 @@
 		<button type=button id=go-button>Go</button>
 		<script type=module>
 			// some dependencies and utilities
-			import * as mat4 from 'gl-matrix/src/gl-matrix/mat4'
-			import * as mat3 from 'gl-matrix/src/gl-matrix/mat3'
-			import * as vec3 from 'gl-matrix/src/gl-matrix/vec3'
+			import * as mat4 from '../libs/gl-matrix/mat4.js'
+			import * as vec3 from '../libs/gl-matrix/vec3.js'
 
-			import XREngine from "webxr-ios-js/examples/XREngine.js"
-			import XRInputManager from "webxr-ios-js/examples/XRInputManager.js"
+			import XREngine from "../XREngine.js"
+			import XRInputManager from "../XRInputManager.js"
 
 			let device = null
 			let session = null
