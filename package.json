@@ -22,7 +22,6 @@
   "homepage": "https://github.com/MozillaReality/webxr-geospatial#readme",
   "devDependencies": {
     "cross-env": "^5.1.3",
-    "gl-matrix": "^2.5.1",
     "rollup": "^0.55.3",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-cleanup": "^1.0.1",
@@ -34,7 +33,8 @@
     "webpack": "^3.5.5"
   },
   "dependencies": {
+    "gl-matrix": "^2.5.1",
     "webxr-polyfill": "git://github.com/blairmacintyre/webxr-polyfill.git#minimal-for-app",
-    "webxr-ios-js": "git://github.com/mozilla-mobile/webxr-ios-js.git"
+    "webxr-ios-js": "github:mozilla-mobile/webxr-ios-js"
   }
 }
