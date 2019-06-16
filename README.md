@@ -9,6 +9,8 @@ This library works in conjunction with WebXR, assuming three things:
 - the existence of the [Web Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API).  This is used for location.
 - that [Cesium.js](https://cesiumjs.org) has been loaded, as the library uses Cesium.js for geospatial computations.   We use a stripped down version of Cesium.js that only includes the core math and data libraries, which you can find in the examples directory, or [here](https://github.com/blairmacintyre/cesium/tree/minimal-cesium-core)
 
+(In theory, it may be possible to remove the requirement to have WebXR align with geospatial coordinates by doing the alignment in this library. This would require using the motion or sensor APIs to access the compass heading of the device, and set the orientation of the geospatial anchor nodes appropriately.  In practice, this will not work as well as having the platform do the alignment directly.)
+
 ## Setup
 
 An app that wants to use geospatial anchors with WebXR should load Cesium.js, followed by the webxr-geospatial.js library.
