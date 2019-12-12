@@ -25,9 +25,30 @@ function _patchXRDevice() {
     XRDevice = GLOBALS.XRDevice
 
     var __XRDevice_requestSession = XRDevice.prototype.requestSession
-    XRDevice.prototype.requestSession = async function (options) {
+
+    XRDevice.prototype.requestSession = async function (mode, xrSessionInit={}) {
+		const requiredFeatures = xrSessionInit.requiredFeatures || [];
+		const optionalFeatures = xrSessionInit.optionalFeatures || [];
+
+        const options = {};
+        var geoOption = requiredFeatures.indexOf("geolocation")
+		if (geoOption >= 0) {
+            requiredFeatures.splice(geoOption, 1);
+			options.geolocation = true;
+        }         
+        geoOption = optionalFeatures.indexOf("geolocation")
+        if (geoOption >= 0) {
+            optionalFeatures.splice(geoOption, 1);
+			options.geolocation = true;
+		}
+
+		if (requiredFeatures.indexOf("alignEUS") >= 0 ||
+			optionalFeatures.indexOf("alignEUS") >= 0) {
+			options.alignEUS = true;
+		}
+
         let bindrequest = __XRDevice_requestSession.bind(this)
-        let session = await bindrequest(options)
+        let session = await bindrequest(mode, xrSessionInit)
 
         // must have Cesium loaded by the time you request a session or Geo won't work
         if (window.hasOwnProperty("Cesium") && options.alignEUS && options.geolocation) {
@@ -58,23 +79,26 @@ function _patchXRDevice() {
         return ret
     }
 
-    var __XRDevice_supportsSession = XRDevice.prototype.supportsSession
-    XRDevice.prototype.supportsSession = async function (options={}) {
-        let bindrequest = __XRDevice_supportsSession.bind(this)
-        let newOptions = Object.assign({}, options)
-        var _wantsGeo = false
-        if (options.hasOwnProperty("geolocation")) {
-            _wantsGeo = true
-            delete newOptions.geolocation
-        }
-        let ret = await bindrequest(options)  // if not supported, will throw
+    // UPDATE:  now that isSessionSupported only checks mode, we can 
+    // just let it be.
+    //
+    // var __XRDevice_supportsSession = XRDevice.prototype.supportsSession
+    // XRDevice.prototype.supportsSession = async function (options={}) {
+    //     let bindrequest = __XRDevice_supportsSession.bind(this)
+    //     let newOptions = Object.assign({}, options)
+    //     var _wantsGeo = false
+    //     if (options.hasOwnProperty("geolocation")) {
+    //         _wantsGeo = true
+    //         delete newOptions.geolocation
+    //     }
+    //     let ret = await bindrequest(options)  // if not supported, will throw
         
-        if (!_wantsGeo || options.hasOwnProperty("alignEUS")) {
-            return true
-        } else {
-            throw(null)
-        }
-    }
+    //     if (!_wantsGeo || options.hasOwnProperty("alignEUS")) {
+    //         return true
+    //     } else {
+    //         throw(null)
+    //     }
+    // }
 }
 
 async function useSession(session) { 
